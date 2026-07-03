@@ -34,7 +34,6 @@ async def async_get_config_entry_diagnostics(
 ) -> dict[str, Any]:
     """Return diagnostics for a config entry."""
     coordinator = entry.runtime_data.coordinator
-    client = entry.runtime_data.client
     integration = entry.runtime_data.integration
 
     # Get device and entity information
@@ -72,12 +71,6 @@ async def async_get_config_entry_diagnostics(
         "last_update_success": coordinator.last_update_success,
         "update_interval": str(coordinator.update_interval),
         "data_keys": list(coordinator.data.keys()) if isinstance(coordinator.data, dict) else None,
-    }
-
-    # API client information (no sensitive data)
-    api_info = {
-        "base_endpoint": "https://jsonplaceholder.typicode.com",
-        "has_credentials": bool(client._username),  # noqa: SLF001
     }
 
     # Integration information
@@ -124,7 +117,6 @@ async def async_get_config_entry_diagnostics(
         "entry": entry_info,
         "integration": integration_info,
         "coordinator": coordinator_info,
-        "api": api_info,
         "devices": device_info,
         "data_sample": data_sample,
         "error": error_info,

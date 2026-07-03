@@ -31,10 +31,8 @@ if TYPE_CHECKING:
     from custom_components.homestretch.config_flow_handler.options_flow import HomestretchOptionsFlow
 
 # Map exception types to error keys for user-facing messages
-ERROR_MAP = {
-    "HomestretchApiClientAuthenticationError": "auth",
-    "HomestretchApiClientCommunicationError": "connection",
-}
+# ponytail: empty until the Homestretch client defines its exceptions
+ERROR_MAP: dict[str, str] = {}
 
 
 class HomestretchConfigFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):

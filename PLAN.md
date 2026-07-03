@@ -11,7 +11,7 @@ setpoints are recomputed on a schedule (~every 5 minutes) from:
 1. **Distance/travel time to home** — minimum over Scott and Hilary (they may
    not be together).
 2. **The house's recovery ability** — can it reach the preset the house WILL
-   be in at the projected arrival *clock time*? (Arrive 23:15 → target the
+   be in at the projected arrival _clock time_? (Arrive 23:15 → target the
    `sleep` band, not `home`.)
 
 The static `away` setpoints (16–30 °C) become the **outer min/max bounds** the
@@ -48,14 +48,14 @@ trigger/guard-rail automation.
 All input degradation biases toward a tighter band (the dogs must not get
 hot).
 
-| Failure | Behavior |
-|---|---|
-| Tracker offline | Distrust **immediately** (no staleness window). |
-| Tracker offline, pair was "fairly close" at that moment | Assume still together — inherit the partner's tracker. |
-| Tracker offline, pair was apart | Assume that person homebound **from the offline instant**, deadline from last known position (crow-flies @ 100 km/h). |
-| Travel time missing | Crow-flies fallback above. |
-| Travel time present but wrong | Nothing. No buffers. |
-| Outdoor temp missing | Assume **worst-case** recovery rate. |
+| Failure                                                 | Behavior                                                                                                              |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Tracker offline                                         | Distrust **immediately** (no staleness window).                                                                       |
+| Tracker offline, pair was "fairly close" at that moment | Assume still together — inherit the partner's tracker.                                                                |
+| Tracker offline, pair was apart                         | Assume that person homebound **from the offline instant**, deadline from last known position (crow-flies @ 100 km/h). |
+| Travel time missing                                     | Crow-flies fallback above.                                                                                            |
+| Travel time present but wrong                           | Nothing. No buffers.                                                                                                  |
+| Outdoor temp missing                                    | Assume **worst-case** recovery rate.                                                                                  |
 
 - "Fairly close" radius: **1 km** to start (test pending on a real drive
   home).
@@ -69,7 +69,7 @@ hot).
 
 ## Far-zone handling (e.g. The Farm, ~65 km out)
 
-Being in a named zone means *staying somewhere*, not en route — do NOT assume
+Being in a named zone means _staying somewhere_, not en route — do NOT assume
 homebound.
 
 1. **Ask** — actionable notification ("Home tonight?"). Yes → provided ETA is
@@ -80,7 +80,7 @@ homebound.
      (`binary_sensor.scott_linux_laptop_input_active`,
      `media_player.scott_linux_laptop_desktop_media`), or
    - `sensor.pixel_7a_sleep_confidence` > 70 — known to really mean "settled
-     in a dark room"; accepted as correct *for this purpose* (can't
+     in a dark room"; accepted as correct _for this purpose_ (can't
      false-fire while driving; motion kills it).
 3. Sleep detected → deadline = assumed wake **07:30** + travel time; the
    house floats deep overnight and still recovers.
@@ -127,5 +127,5 @@ and testable.
 - Scott: cottage-style special cases for unroutable locations.
 - 1 km "fairly close" radius: validate on a real drive home.
 - Both-out entry signal: derive from the two Google Maps trackers
-  (`is_anyone_out` is *either*, not *both*).
+  (`is_anyone_out` is _either_, not _both_).
 - Dogs' leash trackers, once running.
