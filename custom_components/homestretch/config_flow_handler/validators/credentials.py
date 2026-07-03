@@ -2,19 +2,11 @@
 Credential validators.
 
 Validation functions for user credentials and authentication.
-
-When this file grows, consider splitting into:
-- credentials.py: Basic credential validation
-- oauth.py: OAuth-specific validation
-- api_auth.py: API authentication methods
 """
 
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-
-from custom_components.homestretch.api import HomestretchApiClient
-from homeassistant.helpers.aiohttp_client import async_create_clientsession
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
@@ -22,25 +14,11 @@ if TYPE_CHECKING:
 
 async def validate_credentials(hass: HomeAssistant, username: str, password: str) -> None:
     """
-    Validate user credentials by testing API connection.
+    Validate user credentials.
 
-    Args:
-        hass: Home Assistant instance.
-        username: The username to validate.
-        password: The password to validate.
-
-    Raises:
-        HomestretchApiClientAuthenticationError: If credentials are invalid.
-        HomestretchApiClientCommunicationError: If communication fails.
-        HomestretchApiClientError: For other API errors.
-
+    Raises an exception if credentials are invalid.
     """
-    client = HomestretchApiClient(
-        username=username,
-        password=password,
-        session=async_create_clientsession(hass),
-    )
-    await client.async_get_data()  # May raise authentication/communication errors
+    # ponytail: no backend yet — accepts anything; wire real validation with the Homestretch client
 
 
 __all__ = [

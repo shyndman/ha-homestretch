@@ -6,7 +6,6 @@ LOGGER: Logger = getLogger(__package__)
 
 # Integration metadata
 DOMAIN = "homestretch"
-ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 
 # Platform parallel updates - applied to all platforms
 PARALLEL_UPDATES = 1
