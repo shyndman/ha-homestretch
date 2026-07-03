@@ -132,7 +132,7 @@ rm .github/workflows/template-sync.yml
 rm .templatesyncignore
 ```
 
-That's it. No workflow runs, no PRs, no noise. You can still pull upstream changes manually at any time by comparing your repository against `shyndman/ha-homestretch`.
+That's it. No workflow runs, no PRs, no noise. You can still pull upstream changes manually at any time by comparing your repository against `jpawlowski/hacs.integration_blueprint`.
 
 ---
 
