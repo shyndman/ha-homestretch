@@ -8,7 +8,7 @@ Repositories created from this blueprint can receive upstream improvements autom
 
 ### How it works
 
-Every Monday at 07:00 UTC, the workflow checks whether the upstream blueprint (`shyndman/ha-homestretch`) has new commits. If it does, it opens a pull request with the diff against your repository.
+Every Monday at 07:00 UTC, the workflow checks whether the upstream blueprint (`jpawlowski/hacs.integration_blueprint`) has new commits. If it does, it opens a pull request with the diff against your repository.
 
 The workflow is configured to update an existing open template-sync PR when possible (force-push + PR edit) instead of closing it and opening a new one each run.
 
