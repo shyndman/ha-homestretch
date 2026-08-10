@@ -272,7 +272,13 @@ if command -v npm >/dev/null 2>&1; then
         log_step "Fixing node_modules ownership (Docker volume created as root)"
         sudo chown "$(id -un):$(id -gn)" node_modules
     fi
-    npm ci --silent
+    # Use --silent in interactive environments to reduce noise, but allow errors
+    # to surface in CI where --silent would hide them and make failures undiagnosable.
+    if [[ -n "${GITHUB_ACTIONS:-}" ]]; then
+        npm ci
+    else
+        npm ci --silent
+    fi
 else
     log_warning "npm not found — skipping Node.js dependency installation"
     log_info "Install Node.js to enable: prettier, markdownlint-cli2"

@@ -52,6 +52,12 @@ jobs:
             ha-venv-${{ runner.os }}-py314-ha${{ steps.ha_version.outputs.HA_VERSION }}-
             ha-venv-${{ runner.os }}-py314-
 
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: lts/*
+          cache: npm
+
       - name: Install shfmt
         run: sudo apt-get install -y shfmt
 
